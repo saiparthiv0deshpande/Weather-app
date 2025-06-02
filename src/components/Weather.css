@@ -1,69 +1,102 @@
-.weather{
+
+.weather {
     place-self: center;
-    padding: 40px;
+    padding: 5%;
     border-radius: 10px;
     background-image: linear-gradient(45deg, #2f4680, #16033f);
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
-.search-bar{
+
+.search-bar {
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
+    max-width: 500px;
 }
-.search-bar input{
+
+.search-bar input {
     height: 50px;
+    width: 100%; /* Ensures input doesn’t overflow */
     border: none;
     outline: none;
     border-radius: 40px;
     padding-left: 25px;
     background: #ebfffc;
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 18px);
 }
-.search-bar img{
-    width: 50px;
+
+.search-bar img {
+    width: clamp(40px, 10vw, 50px);
+    min-width: 40px; /* Prevents icon from disappearing */
     padding: 15px;
     border-radius: 50%;
     background: #ebfffc;
     cursor: pointer;
 }
-.weather-icon{
-    width: 150px;
-    margin: 30px 0;
-    background-color: transparent;
+
+.weather-icon {
+    width: clamp(100px, 30vw, 150px);
+    margin: 5% 0;
 }
-.temp{
+
+.temp {
     color: #fff;
-    font-size: 80px;
+    font-size: clamp(40px, 15vw, 80px);
     line-height: 1;
 }
-.location{
+
+.location {
     color: #fff;
-    font-size: 40px;
+    font-size: clamp(20px, 6vw, 40px);
+    text-align: center;
+    padding: 0 10px;
+    word-break: break-word; /* Prevents long location names from overflowing */
 }
-.weather-data{
+
+.weather-data {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 5%;
     color: #fff;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap; /* Allows columns to wrap */
+    gap: 20px; /* Adds space between wrapped rows */
 }
-.weather-data .col{
+
+.weather-data .col {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    font-size: 22px;
-    /* height: 40px; */
+    font-size: clamp(16px, 4vw, 22px);
+    flex: 1;
+    min-width: 120px; /* Controls when columns wrap */
 }
 
-.weather-data .col span{
+.weather-data .col span {
     display: block;
-    font-size: 16px;
+    font-size: clamp(12px, 3vw, 16px);
 }
-.weather-data .col img{
-    width: 26px;
-    
 
+.weather-data .col img {
+    width: clamp(20px, 5vw, 26px);
     margin: auto;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 480px) {
+    .weather {
+        padding: 20px 10px; /* Tighter padding on mobile */
+    }
+    .search-bar {
+        flex-direction: column; /* Stack search bar items vertically */
+    }
+    .weather-data .col {
+        min-width: 45%; /* 2 columns instead of 4 on tiny screens */
+    }
 }
